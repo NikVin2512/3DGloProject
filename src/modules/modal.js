@@ -2,7 +2,6 @@
 
 const modal = () => {
   const modal = document.querySelector('.popup');
-  const closeBtn = document.querySelector('.popup-close');
   const popupBtn = document.querySelectorAll('.popup-btn');
   let count = 0;
   let id;
@@ -35,7 +34,8 @@ const modal = () => {
     });
   });
 
-  closeBtn.addEventListener('click', () => {
+  modal.addEventListener('click', (e) => {
+    if(!e.target.closest('.popup-content') || e.target.classList.contains('popup-close'))
     modal.style.display = 'none';
     count = 0;
 
