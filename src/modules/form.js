@@ -17,6 +17,9 @@ const form = () => {
   const formPhonePopup = document.getElementById('form3-phone');
   const formPhoneFooter = document.getElementById('form2-phone');
 
+  const formMessageFooter = document.getElementById('form2-message');
+
+
 
 
   const numExam = (input) => {
@@ -27,7 +30,7 @@ const form = () => {
 
   const textExam = (input) => {
     input.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/[^а-яё\-\s]/i, '');
+        e.target.value = e.target.value.replace(/[^а-яё\ \s]/i, '');
     });
   };
 
@@ -39,7 +42,13 @@ const form = () => {
 
   const phoneExam = (input) => {
     input.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/[^0-9-()\s]/, '');
+        e.target.value = e.target.value.replace(/[^0-9-()\+\s]/, '');
+    });
+  };
+
+  const messageExam = (input) => {
+    input.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[^?!:;",.а-яё0-9\s]/i, '');
     });
   };
 
@@ -59,6 +68,7 @@ phoneExam(formPhoneHead);
 phoneExam(formPhonePopup);
 phoneExam(formPhoneFooter);
 
+messageExam(formMessageFooter);
 
 };
 
