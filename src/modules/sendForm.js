@@ -10,11 +10,13 @@ const sendForm = ({formId, someElem = []}) => {
   const validate = (list) => {
     let success = true;
 
-    // list.forEach(i => {
-    //   if(!i.classList.contains('success')) {
-    //     success = false;
-    //   }
-    // });
+    list.forEach(input => {
+      if(input.value.length >= 11 && input.type == 'tel') {
+        success = true;
+      } else {
+        success = false;
+      }
+    });
     return success;
   };
 
@@ -61,7 +63,7 @@ const sendForm = ({formId, someElem = []}) => {
           statusBlock.textContent = successText;
         });
     } else {
-      console.log("error");
+      statusBlock.textContent = errorText;
       
     }
   };

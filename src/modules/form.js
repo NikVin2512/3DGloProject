@@ -29,8 +29,12 @@ const form = () => {
   };
 
   const textExam = (input) => {
-    input.addEventListener('input', (e) => {
+    input.addEventListener('blur', (e) => {
         e.target.value = e.target.value.replace(/[^а-яё\ \s]/i, '');
+
+        if (e.target.value != '') {
+          e.target.value = e.target.value[0].toUpperCase() + e.target.value.slice(1);
+      }
     });
   };
 
@@ -41,8 +45,11 @@ const form = () => {
   };
 
   const phoneExam = (input) => {
-    input.addEventListener('input', (e) => {
+    input.addEventListener('blur', (e) => {
         e.target.value = e.target.value.replace(/[^0-9-()\+\s]/, '');
+        if(e.target.value.length < 11) {
+          return false;
+        }
     });
   };
 
